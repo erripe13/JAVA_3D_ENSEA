@@ -1,8 +1,10 @@
+package org.world;
+
 public class Airport {
-    private String name;
-    private double latitude;
-    private double longitude;
-    private String codeIATA;
+    private final String name;
+    private final double latitude;
+    private final double longitude;
+    private final String codeIATA;
 
     public Airport(String name, double latitude, double longitude, String codeIATA) {
         this.name = name;
@@ -13,7 +15,7 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport" +
+        return "org.world.Airport" +
                 "name='" + name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +

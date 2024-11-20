@@ -1,20 +1,24 @@
+package org.world;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class World {
-    private List<Airport> airportList;
+    private static final Logger LOG = Logger.getLogger(World.class.getName());
+    private final List<Airport> airportList;
 
     public World(String fileName) {
         airportList = new ArrayList<>();
-        try {
-            BufferedReader buf = new BufferedReader(new FileReader(fileName));
+        try (BufferedReader buf = new BufferedReader(new FileReader(fileName))) {
             String s = buf.readLine();
             while (s != null) {
-                s = s.replaceAll("\"", ""); // Remove quotes
-                String fields[] = s.split(",");
+                s = s.replace("\"", ""); // Remove quotes
+                String[] fields = s.split(",");
                 // Debugging point
                 if (fields[1].equals("large_airport")) {
                     String name = fields[2];
@@ -27,10 +31,9 @@ public class World {
                 }
                 s = buf.readLine();
             }
-            buf.close();
         } catch (IOException e) {
-            System.out.println("Maybe the file isn't there?");
-            e.printStackTrace();
+            LOG.severe("An error occurred: " + e.getMessage());
+            LOG.log(Level.SEVERE, "Exception: ", e);
         }
     }
 
