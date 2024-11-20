@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="-findNearestAirport&#10;-findByCode&#10;-distance">
-      <change afterPath="$PROJECT_DIR$/src/org/earth/Earth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="-Photo importée + terre qui tourne">
+      <change afterPath="$PROJECT_DIR$/src/org/earth/earth_texture.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/world/Airport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/interace/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/earth/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/earth/Earth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/interace/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/interace/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +76,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adrie\IdeaProjects\JAVA_3D_ENSEA\src\org\earth" />
+      <recent name="C:\Users\adrie\IdeaProjects\JAVA_3D_ENSEA\doc" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.interace.Interface" />
@@ -118,7 +121,8 @@
       <workItem from="1732122714689" duration="58000" />
       <workItem from="1732122780022" duration="252000" />
       <workItem from="1732123044556" duration="108000" />
-      <workItem from="1732123164060" duration="2806000" />
+      <workItem from="1732123164060" duration="6195000" />
+      <workItem from="1732129420366" duration="700000" />
     </task>
     <task id="LOCAL-00001" summary="TP1">
       <option name="closed" value="true" />
@@ -144,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731601390358</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fin de la parti &quot;Travail Maison&quot;&#10;Correction SonarLint">
+      <option name="closed" value="true" />
+      <created>1732126075045</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732126075045</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +177,8 @@
     <MESSAGE value="TP1" />
     <MESSAGE value="AIRPORT finder working" />
     <MESSAGE value="-findNearestAirport&#10;-findByCode&#10;-distance" />
-    <option name="LAST_COMMIT_MESSAGE" value="-findNearestAirport&#10;-findByCode&#10;-distance" />
+    <MESSAGE value="Fin de la parti &quot;Travail Maison&quot;&#10;Correction SonarLint" />
+    <MESSAGE value="-Photo importée + terre qui tourne" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Photo importée + terre qui tourne" />
   </component>
 </project>
