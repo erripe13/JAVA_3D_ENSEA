@@ -2,7 +2,9 @@ package org.interace;
 
 
 import javafx.scene.PerspectiveCamera;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.PickResult;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Translate;
 import org.earth.Earth;
@@ -43,14 +45,32 @@ public class Interface extends Application {
 
         // Add event handler for mouse events
         theScene.addEventHandler(MouseEvent.ANY, event -> {
-            if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
-                LOG.fine("Clicked on: (" + event.getSceneX() + ", " + event.getSceneY() + ")");
-            }
-            if (event.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-                double zoomFactor = event.getSceneY() - primaryStage.getHeight() / 2;
-                camera.getTransforms().add(new Translate(0, 0, zoomFactor));
+            if (event.getButton() == MouseButton.SECONDARY && event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+                PickResult pickResult = event.getPickResult();
+                if (pickResult.getIntersectedNode() != null) {
+                    // Retrieve the intersection point
+                    double x = pickResult.getIntersectedTexCoord().getX();
+                    double y = pickResult.getIntersectedTexCoord().getY();
+
+                    // Convert to latitude and longitude
+                    double latitude = 180 * (0.5 - y);
+                    double longitude = 360 * (x - 0.5);
+
+                    // Find the nearest airport
+                    World world = new World("doc/airport-codes_no_comma.csv");
+                    Airport nearestAirport = world.findNearestAirport(longitude, latitude);
+
+                    // Display the nearest airport in the console and add a red sphere
+                    if (nearestAirport != null) {
+                        LOG.fine("Nearest airport: " + nearestAirport.toString());
+                        earth.displayRedSphere(nearestAirport);
+                    } else {
+                        LOG.fine("No airport found near the clicked point.");
+                    }
+                }
             }
         });
+        // Add event handler for scroll events (zoom) cause more efficient
         theScene.addEventHandler(ScrollEvent.SCROLL, event -> {
             double zoomFactor = event.getDeltaY();
             camera.getTransforms().add(new Translate(0, 0, zoomFactor));

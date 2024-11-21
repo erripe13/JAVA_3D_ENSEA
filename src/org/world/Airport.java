@@ -26,13 +26,12 @@ public class Airport {
         return codeIATA;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
+    public double getLatitude() {return latitude;}
 
     public double getLongitude() {
         return longitude;
     }
+
     public double calculDistance(Airport a) {
         final int R = 6371; // Radius of the earth in km
         double latDistance = Math.toRadians(a.getLatitude() - this.latitude);
