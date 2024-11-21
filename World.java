@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World {
-    protected ArrayList<Aeroport> list;
+    private final List<Aeroport> list;
 
     public World(String fileName) {
         this.list = new ArrayList<>();
@@ -50,74 +50,24 @@ public class World {
             System.out.println("Erreur lors de la lecture du fichier : " + fileName);
             e.printStackTrace();
         }
+
     }
 
-    public List<Aeroport> getList() {
-        return list;
-    }
-
-    public double distance(Aeroport a, double latitude, double longitude) {
-        double theta1 = Math.toRadians(a.getLatitude());
-        double theta2 = Math.toRadians(latitude);
-        double phi1 = Math.toRadians(a.getLongitude());
-        double phi2 = Math.toRadians(longitude);
-        double dist = Math.pow(theta2 - theta1, 2) + Math.pow((phi2 - phi1) * Math.cos((theta2 + theta1) / 2), 2);
-        return dist;
-    }
-
-    public double distance(double latitude1, double longitude1, double latitude2, double longitude2) {
-        double theta1 = Math.toRadians(latitude1);
-        double theta2 = Math.toRadians(latitude2);
-        double phi1 = Math.toRadians(longitude1);
-        double phi2 = Math.toRadians(longitude2);
-        double dist = Math.pow(theta2 - theta1, 2) + Math.pow((phi2 - phi1) * Math.cos((theta2 + theta1) / 2), 2);
-        return dist;
-    }
-
-    public Aeroport findNearestAirport(double latitude, double longitude) {
-        Aeroport closest = null;
-        double minDistance = Double.MAX_VALUE;
+    public Aeroport trouverAeroportLePlusProche(double latitude, double longitude) {
+        Aeroport plusProche = null;
+        double distanceMin = Double.MAX_VALUE;
 
         for (Aeroport aeroport : list) {
-            double dist = distance(aeroport, latitude, longitude);
-            if (dist < minDistance) {
-                minDistance = dist;
-                closest = aeroport;
+            double distance = aeroport.calculerDistance(new Aeroport("", "", "", latitude, longitude));
+            if (distance < distanceMin) {
+                distanceMin = distance;
+                plusProche = aeroport;
             }
         }
-        return closest;
+        return plusProche;
     }
 
-    public Aeroport findByCode(String codeIATA) {
-        for (Aeroport aeroport : list) {
-            if (aeroport.getIATA().equalsIgnoreCase(codeIATA)) {
-                return aeroport;
-            }
-        }
-        return null;
-    }
-
-    public static void main(String[] args) {
-        World w = new World("./data/airport-codes_no_comma.csv");
-        System.out.println("Found " + w.getList().size() + " airports.");
-
-        Aeroport paris = w.findNearestAirport(48.866, 2.316); // Latitude and Longitude switched for consistency
-        Aeroport cdg = w.findByCode("CDG");
-
-        if (paris != null) {
-            double distance = w.distance(48.866, 2.316, paris.getLatitude(), paris.getLongitude());
-            System.out.println(paris);
-            System.out.println(distance);
-        } else {
-            System.out.println("Aucun aéroport trouvé à proximité de Paris.");
-        }
-
-        if (cdg != null) {
-            double distanceCDG = w.distance(48.866, 2.316, cdg.getLatitude(), cdg.getLongitude());
-            System.out.println(cdg);
-            System.out.println(distanceCDG);
-        } else {
-            System.out.println("Aéroport avec le code CDG introuvable.");
-        }
+    public Aeroport trouverAeroportParCode(String codeIATA) {
+        return list.stream().filter(a -> a.getIATA().equalsIgnoreCase(codeIATA)).findFirst().orElse(null);
     }
 }
