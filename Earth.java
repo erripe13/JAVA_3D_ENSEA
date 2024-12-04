@@ -5,18 +5,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
-//import org.world.Aeroport;
 
 public class Earth extends Group {
-    private static final double RAYON = 150;
+    private static final double RADIUS = 50; // Rayon de la Terre
 
     public Earth() {
-        Sphere sph = new Sphere(RAYON);
+        Sphere sph = new Sphere(RADIUS); // Créer une sphère avec le nouveau rayon
 
-        PhongMaterial materialTerre = new PhongMaterial();
-        Image textureTerre = new Image(getClass().getResource("data/earth_lights_4800.png").toExternalForm());
-        materialTerre.setDiffuseMap(textureTerre);
-        sph.setMaterial(materialTerre);
+        PhongMaterial material = new PhongMaterial();
+        Image earthImage = new Image(getClass().getResource("data/earth_lights_4800.png").toExternalForm());
+        material.setDiffuseMap(earthImage);
+        sph.setMaterial(material);
 
         Rotate rotation = new Rotate(0, Rotate.Y_AXIS);
         this.getTransforms().add(rotation);
@@ -25,24 +24,31 @@ public class Earth extends Group {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long maintenant) {
-                rotation.setAngle(rotation.getAngle() + 0.1);
+                rotation.setAngle(rotation.getAngle() + 0.25); // Vitesse de rotation ajustée
             }
         };
         animationTimer.start();
     }
 
-    public void afficherMarqueur(Aeroport aeroport) {
+    public Sphere createSphere(Aeroport aeroport, Color color) {
         double latitude = aeroport.getLatitude();
         double longitude = aeroport.getLongitude();
 
-        Sphere sphere = new Sphere(3);
-        PhongMaterial materialRouge = new PhongMaterial(Color.RED);
-        sphere.setMaterial(materialRouge);
+        Sphere sphere = new Sphere(2);
+        PhongMaterial material = new PhongMaterial(color);
+        sphere.setMaterial(material);
 
-        sphere.setTranslateX(RAYON * Math.cos(Math.toRadians(latitude)) * Math.sin(Math.toRadians(longitude)));
-        sphere.setTranslateY(-RAYON * Math.sin(Math.toRadians(latitude)));
-        sphere.setTranslateZ(-RAYON * Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(longitude)));
+        sphere.setTranslateZ(-RADIUS);
+        Rotate rs = new Rotate(-longitude, -sphere.getTranslateX(), -sphere.getTranslateY(), -sphere.getTranslateZ(), Rotate.Y_AXIS);
+        sphere.getTransforms().add(rs);
+        Rotate rv = new Rotate(-latitude * (7.0 / 10.0), -sphere.getTranslateX(), -sphere.getTranslateY(), -sphere.getTranslateZ(), Rotate.X_AXIS);
+        sphere.getTransforms().add(rv);
 
-        this.getChildren().add(sphere);
+        return sphere;
+    }
+
+    public void afficherMarqueur(Aeroport aeroport) {
+        Sphere sphereRouge = createSphere(aeroport, Color.RED);
+        this.getChildren().add(sphereRouge);
     }
 }
