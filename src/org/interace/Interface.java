@@ -9,6 +9,7 @@ import javafx.scene.transform.Translate;
 import org.earth.Earth;
 import org.world.Airport;
 import org.world.World;
+import org.flight.FetchFlightsTask;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -97,30 +98,9 @@ public class Interface extends Application {
     }
 
     private void fetchAndDisplayFlights(Earth earth, Airport clickedAirport, World world) {
-        try {
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://api.aviationstack.com/v1/flights?access_key=698fa7a1523c8db3c89d206a9bb4ecb0&arr_iata="+clickedAirport.getCodeIATA())) // Replace with the actual API URL
-                    .build();
-
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            // Parse the JSON response with JsonFlightFiller
-            JsonFlightFiller jsonFlightFiller = new JsonFlightFiller(response.body(), world);
-            ArrayList<Flight> flights = jsonFlightFiller.getList();
-
-            // Display departure airports as yellow spheres for flights arriving at the clicked airport
-            for (Flight flight : flights) {
-                if (clickedAirport.getCodeIATA().equals(flight.getArrivalIataCode())) {
-                    Airport departureAirport = world.findByCode(flight.getDepartureIataCode());
-                    if (departureAirport != null) {
-                        earth.displayYellowSphere(departureAirport);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        FetchFlightsTask fetchFlightsTask = new FetchFlightsTask(earth, clickedAirport, world);
+        Thread thread = new Thread(fetchFlightsTask);
+        thread.start();
     }
 
     public static void main(String[] args) {

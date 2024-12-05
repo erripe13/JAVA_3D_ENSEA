@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="lasts steps">
+    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="freezed earth with all good airport">
+      <change afterPath="$PROJECT_DIR$/src/org/flight/FetchFlightsTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/interace/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/interace/Interface.java" afterDir="false" />
     </list>
@@ -90,7 +91,7 @@
       <updated>1731592557822</updated>
       <workItem from="1731592558903" duration="7738000" />
       <workItem from="1733393587550" duration="152000" />
-      <workItem from="1733402122472" duration="12537000" />
+      <workItem from="1733402122472" duration="13488000" />
     </task>
     <task id="LOCAL-00001" summary="TP1">
       <option name="closed" value="true" />
@@ -132,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733412605106</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="freezed earth with all good airport">
+      <option name="closed" value="true" />
+      <created>1733415149771</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733415149771</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,7 +153,8 @@
     <MESSAGE value="-findNearestAirport&#10;-findByCode&#10;-distance" />
     <MESSAGE value="TP3" />
     <MESSAGE value="lasts steps" />
-    <option name="LAST_COMMIT_MESSAGE" value="lasts steps" />
+    <MESSAGE value="freezed earth with all good airport" />
+    <option name="LAST_COMMIT_MESSAGE" value="freezed earth with all good airport" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
