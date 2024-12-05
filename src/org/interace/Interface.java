@@ -77,7 +77,7 @@ public class Interface extends Application {
                         earth.displayRedSphere(nearestAirport);
 
                         // Fetch flight data and display yellow spheres
-                        fetchAndDisplayFlights(earth, nearestAirport);
+                        fetchAndDisplayFlights(earth, nearestAirport, world);
                     } else {
                         LOG.fine("No airport found near the clicked point.");
                     }
@@ -96,29 +96,26 @@ public class Interface extends Application {
         primaryStage.show();
     }
 
-    private void fetchAndDisplayFlights(Earth earth, Airport clickedAirport) {
+    private void fetchAndDisplayFlights(Earth earth, Airport clickedAirport, World world) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://api.aviationstack.com/v1/flights?access_key=698fa7a1523c8db3c89d206a9bb4ecb0")) // Replace with the actual API URL
+                    .uri(new URI("https://api.aviationstack.com/v1/flights?access_key=698fa7a1523c8db3c89d206a9bb4ecb0&arr_iata="+clickedAirport.getCodeIATA())) // Replace with the actual API URL
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             // Parse the JSON response with JsonFlightFiller
-            World world = new World("doc/airport-codes_no_comma.csv");
             JsonFlightFiller jsonFlightFiller = new JsonFlightFiller(response.body(), world);
             ArrayList<Flight> flights = jsonFlightFiller.getList();
 
-            // Display departure airports as yellow spheres and arrival airport of the clicked airport
+            // Display departure airports as yellow spheres for flights arriving at the clicked airport
             for (Flight flight : flights) {
-                Airport departureAirport = world.findByCode(flight.getDepartureIataCode());
-                Airport arrivalAirport = world.findByCode(flight.getArrivalIataCode());
-                if (departureAirport != null) {
-                    earth.displayYellowSphere(departureAirport);
-                }
-                if (arrivalAirport != null && clickedAirport.equals(departureAirport)) {
-                    earth.displayYellowSphere(arrivalAirport);
+                if (clickedAirport.getCodeIATA().equals(flight.getArrivalIataCode())) {
+                    Airport departureAirport = world.findByCode(flight.getDepartureIataCode());
+                    if (departureAirport != null) {
+                        earth.displayYellowSphere(departureAirport);
+                    }
                 }
             }
         } catch (Exception e) {
