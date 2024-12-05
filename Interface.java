@@ -8,7 +8,6 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.ConsoleHandler;
@@ -48,24 +47,23 @@ public class Interface extends Application {
         scene.setCamera(camera);
 
         // Gestion des événements de la souris pour la rotation de la caméra
-        scene.setOnMousePressed(event -> {
-            if (event.getButton() == MouseButton.PRIMARY) {
-                anchorX = event.getSceneX();
-                anchorY = event.getSceneY();
-                anchorAngleX = rotateX.getAngle();
-                anchorAngleY = rotateY.getAngle();
-            }
-        });
-
-        scene.setOnMouseDragged(event -> {
-            if (event.getButton() == MouseButton.PRIMARY) {
-                double deltaX = event.getSceneX() - anchorX;
-                double deltaY = event.getSceneY() - anchorY;
-
-                rotateY.setAngle(anchorAngleY + deltaX / 2);
-                rotateX.setAngle(anchorAngleX - deltaY / 2);
-            }
-        });
+//        scene.setOnMousePressed(event -> {
+//            if (event.getButton() == MouseButton.PRIMARY) {
+//                anchorX = event.getSceneX();
+//                anchorY = event.getSceneY();
+//                anchorAngleX = rotateX.getAngle();
+//                anchorAngleY = rotateY.getAngle();
+//            }
+//        });
+//
+//        scene.setOnMouseDragged(event -> {
+//            if (event.getButton() == MouseButton.PRIMARY) {
+//                double deltaX = event.getSceneX() - anchorX;
+//                double deltaY = event.getSceneY() - anchorY;
+//                rotateY.setAngle(anchorAngleY + deltaX / 2);
+//                rotateX.setAngle(anchorAngleX - deltaY / 2);
+//            }
+//        });
 
         // Gestion du zoom avec la molette de la souris
         scene.addEventHandler(ScrollEvent.SCROLL, event -> {
