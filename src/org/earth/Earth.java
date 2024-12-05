@@ -65,4 +65,8 @@ public class Earth extends Group {
         Sphere redSphere = createSphere(a, Color.RED);
         this.getChildren().add(redSphere);
     }
+    public void displayYellowSphere(Airport a) {
+        Sphere yellowSphere = createSphere(a, Color.YELLOW);
+        this.getChildren().add(yellowSphere);
+    }
 }

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="png picture">
+    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="-findNearestAirport&#10;-findByCode&#10;-distance">
+      <change afterPath="$PROJECT_DIR$/src/org/flight/Flight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/flight/JsonFlightFiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/earth/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/earth/Earth.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/interace/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/interace/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/world/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/world/Airport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +33,13 @@
     &quot;assignee&quot;: &quot;aristote94&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/erripe13/JAVA_3D_ENSEA.git&quot;,
-    &quot;accountId&quot;: &quot;97561a91-fdb5-4c49-8f6e-bef4745a86ca&quot;
-  }
-}</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Earth.java" root0="FORCE_HIGHLIGHTING" />
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="4a050115-5bc6-4d20-9b87-a20368a6c12a" />
+        <option name="url" value="https://github.com/erripe13/JAVA_3D_ENSEA.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -53,59 +54,35 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Adrien",
     "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/adrie/Documents/javafx-sdk-23.0.1/lib",
+    "last_opened_file_path": "C:/Users/adrie/Documents/libJson",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\adrie\IdeaProjects\JAVA_3D_ENSEA\src\org\earth" />
-      <recent name="C:\Users\adrie\IdeaProjects\JAVA_3D_ENSEA\doc" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.interace.Interface" />
       <module name="TP_JAVA_3D" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\adrie\Documents\javafx-sdk-23.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\adrie\Documents\javafx-sdk-23.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="TP_JAVA_3D" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -116,14 +93,8 @@
       <option name="presentableId" value="Default" />
       <updated>1731592557822</updated>
       <workItem from="1731592558903" duration="7738000" />
-      <workItem from="1731880593839" duration="41000" />
-      <workItem from="1732121005996" duration="1677000" />
-      <workItem from="1732122714689" duration="58000" />
-      <workItem from="1732122780022" duration="252000" />
-      <workItem from="1732123044556" duration="108000" />
-      <workItem from="1732123164060" duration="6195000" />
-      <workItem from="1732129420366" duration="1539000" />
-      <workItem from="1732192817622" duration="8467000" />
+      <workItem from="1733393587550" duration="152000" />
+      <workItem from="1733402122472" duration="9636000" />
     </task>
     <task id="LOCAL-00001" summary="TP1">
       <option name="closed" value="true" />
@@ -149,61 +120,16 @@
       <option name="project" value="LOCAL" />
       <updated>1731601390358</updated>
     </task>
-    <task id="LOCAL-00004" summary="Fin de la parti &quot;Travail Maison&quot;&#10;Correction SonarLint">
-      <option name="closed" value="true" />
-      <created>1732126075045</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1732126075045</updated>
-    </task>
-    <task id="LOCAL-00005" summary="-Photo importée + terre qui tourne">
-      <option name="closed" value="true" />
-      <created>1732130135891</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1732130135891</updated>
-    </task>
-    <task id="LOCAL-00006" summary="png picture">
-      <option name="closed" value="true" />
-      <created>1732130169522</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1732130169522</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="TP1" />
     <MESSAGE value="AIRPORT finder working" />
     <MESSAGE value="-findNearestAirport&#10;-findByCode&#10;-distance" />
-    <MESSAGE value="Fin de la parti &quot;Travail Maison&quot;&#10;Correction SonarLint" />
-    <MESSAGE value="-Photo importée + terre qui tourne" />
-    <MESSAGE value="png picture" />
-    <option name="LAST_COMMIT_MESSAGE" value="png picture" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="longitude" />
-      </configuration>
-    </watches-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="-findNearestAirport&#10;-findByCode&#10;-distance" />
   </component>
 </project>

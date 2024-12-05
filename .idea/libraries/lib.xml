@@ -3,10 +3,12 @@
     <CLASSES>
       <root url="file://$USER_HOME$/Documents/javafx-sdk-23.0.1/lib" />
       <root url="file://$USER_HOME$/Documents/javafx-sdk-23.0.1/lib" />
+      <root url="file://$USER_HOME$/Documents/libJson" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
     <jarDirectory url="file://$USER_HOME$/Documents/javafx-sdk-23.0.1/lib" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/Documents/javafx-sdk-23.0.1/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Documents/libJson" recursive="false" />
   </library>
 </component>
