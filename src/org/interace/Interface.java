@@ -74,7 +74,10 @@ public class Interface extends Application {
                     // Display the nearest airport in the console and add a red sphere
                     if (nearestAirport != null) {
                         LOG.fine("Nearest airport: " + nearestAirport.toString());
-                       earth.displayRedSphere(nearestAirport);
+                        earth.displayRedSphere(nearestAirport);
+
+                        // Fetch flight data and display yellow spheres
+                        fetchAndDisplayFlights(earth, nearestAirport);
                     } else {
                         LOG.fine("No airport found near the clicked point.");
                     }
@@ -91,12 +94,9 @@ public class Interface extends Application {
         // Add the scene to the stage
         primaryStage.setScene(theScene);
         primaryStage.show();
-
-        // Fetch flight data and display yellow spheres
-        fetchAndDisplayFlights(earth);
     }
 
-    private void fetchAndDisplayFlights(Earth earth) {
+    private void fetchAndDisplayFlights(Earth earth, Airport clickedAirport) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -110,11 +110,15 @@ public class Interface extends Application {
             JsonFlightFiller jsonFlightFiller = new JsonFlightFiller(response.body(), world);
             ArrayList<Flight> flights = jsonFlightFiller.getList();
 
-            // Display departure airports as yellow spheres
+            // Display departure airports as yellow spheres and arrival airport of the clicked airport
             for (Flight flight : flights) {
                 Airport departureAirport = world.findByCode(flight.getDepartureIataCode());
+                Airport arrivalAirport = world.findByCode(flight.getArrivalIataCode());
                 if (departureAirport != null) {
                     earth.displayYellowSphere(departureAirport);
+                }
+                if (arrivalAirport != null && clickedAirport.equals(departureAirport)) {
+                    earth.displayYellowSphere(arrivalAirport);
                 }
             }
         } catch (Exception e) {
@@ -123,30 +127,6 @@ public class Interface extends Application {
     }
 
     public static void main(String[] args) {
-
-        // Test airport
-        Airport airport = new Airport("Charles de Gaulle", 49.0097, 2.5479, "CDG");
-
-        // Test World
-        World world = new World("doc/airport-codes_no_comma.csv");
-
-        Airport paris = world.findNearestAirport(2.316, 48.866);
-        Airport cdg = world.findByCode("CDG");
-        double distance = world.distance(2.316, 48.866, paris.getLongitude(), paris.getLatitude());
-
-        double distanceCDG = world.distance(2.316, 48.866, cdg.getLongitude(), cdg.getLatitude());
-
-        if (LOG.isLoggable(Level.FINE)) {
-
-
-            LOG.fine("Found " + world.getList().size() + " airports.");
-            LOG.fine(airport.toString());
-            LOG.fine(paris.toString());
-            LOG.fine(cdg.toString());
-            LOG.fine("Distance nearest: " + distance);
-            LOG.fine("Distance CDG: " + distanceCDG);
-        }
-
         launch(args);
     }
 }
