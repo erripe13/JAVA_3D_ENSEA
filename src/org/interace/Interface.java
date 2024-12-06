@@ -18,17 +18,7 @@ import javafx.stage.Stage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.ConsoleHandler;
-import java.util.ArrayList;
 
-import org.flight.JsonFlightFiller;
-import org.flight.Flight;
-import java.io.BufferedReader;
-import java.io.FileReader;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 public class Interface extends Application {
     private static final Logger LOG = Logger.getLogger(Interface.class.getName());
