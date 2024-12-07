@@ -26,7 +26,7 @@ J'ai eu beaucoup de dificulté à comprendre la consigne concernant l'utilisatio
 
 
 Voici le diagramme de classe de mon projet :
-![Class Diagram](doc/class_diagram.png)
+![Class Diagram](doc/Class_diagram.png)
 
 
 
