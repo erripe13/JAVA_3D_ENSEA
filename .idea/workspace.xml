@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="point red on the rotate earth">
-      <change afterPath="$PROJECT_DIR$/Diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="c501f13e-42cf-4f51-9237-c2fd9097c13b" name="Changes" comment="Finish README.md" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +122,7 @@
       <workItem from="1732123164060" duration="6195000" />
       <workItem from="1732129420366" duration="1539000" />
       <workItem from="1732192817622" duration="8467000" />
-      <workItem from="1733579808589" duration="1018000" />
+      <workItem from="1733579808589" duration="1331000" />
     </task>
     <task id="LOCAL-00001" summary="TP1">
       <option name="closed" value="true" />
@@ -176,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732130169522</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Finish README.md">
+      <option name="closed" value="true" />
+      <created>1733581145505</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733581145505</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +204,8 @@
     <MESSAGE value="Fin de la parti &quot;Travail Maison&quot;&#10;Correction SonarLint" />
     <MESSAGE value="-Photo importée + terre qui tourne" />
     <MESSAGE value="png picture" />
-    <option name="LAST_COMMIT_MESSAGE" value="png picture" />
+    <MESSAGE value="Finish README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish README.md" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
