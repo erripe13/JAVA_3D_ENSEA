@@ -1,0 +1,63 @@
+@startuml
+package org.earth {
+    class Earth {
+        - static final double RADIUS
+        + Earth()
+        + Sphere createSphere(Airport a, Color color)
+        + void displayRedSphere(Airport a)
+    }
+}
+
+package org.world {
+    class Airport {
+        - String name
+        - double latitude
+        - double longitude
+        - String codeIATA
+        + Airport(String name, double latitude, double longitude, String codeIATA)
+        + double getLatitude()
+        + double getLongitude()
+        + String getCodeIATA()
+    }
+
+    class World {
+        - static final Logger LOG
+        - List<Airport> airportList
+        + World(String fileName)
+        + Airport findByCode(String codeIATA)
+        + Airport findNearestAirport(double longitude, double latitude)
+        + double distance(double lon1, double lat1, double lon2, double lat2)
+        + List<Airport> getList()
+    }
+}
+
+package org.interace {
+    class Interface {
+        - static final Logger LOG
+        + void start(Stage primaryStage)
+        + void fetchAndDisplayFlights(Earth earth, Airport clickedAirport, World world)
+        + static void main(String[] args)
+    }
+}
+
+package org.flight {
+    class Flight {
+        - String flightNumber
+        - Airport departure
+        - Airport arrival
+        + Flight(String flightNumber, Airport departure, Airport arrival)
+        + String getFlightNumber()
+        + Airport getDeparture()
+        + Airport getArrival()
+    }
+}
+
+Earth --> Airport : uses
+Earth --> World : uses
+Interface --> Earth : uses
+Interface --> World : uses
+Interface --> Airport : uses
+Interface --> Flight : uses
+Flight --> Airport : uses
+
+@enduml
