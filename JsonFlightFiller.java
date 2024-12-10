@@ -15,18 +15,30 @@ public class JsonFlightFiller {
             JsonReader rdr = Json.createReader(is);
             JsonObject obj = rdr.readObject();
             JsonArray results = obj.getJsonArray("data");
+
             for (JsonObject result : results.getValuesAs(JsonObject.class)) {
                 try {
-                    String flightNumber = result.getJsonObject("flight").getString("number");
-                    String flightStatus = result.getString("flight_status");
-                    JsonObject departure = result.getJsonObject("departure");
-                    String departureAirport = departure.getString("airport");
-                    String scheduledDeparture = departure.getString("scheduled");
-                    JsonObject arrival = result.getJsonObject("arrival");
-                    String arrivalAirport = arrival.getString("airport");
-                    String scheduledArrival = arrival.getString("scheduled");
+                    // Extract flight number
+                    JsonObject flightObj = result.getJsonObject("flight");
+                    String flightNumber = getJsonStringSafely(flightObj, "number");
 
-                    Flight flight = new Flight(flightNumber, flightStatus, departureAirport, arrivalAirport, scheduledDeparture, scheduledArrival);
+                    // Extract flight status
+                    String flightStatus = getJsonStringSafely(result, "flight_status");
+
+                    // Extract departure details
+                    JsonObject departure = result.getJsonObject("departure");
+                    String departureAirport = getJsonStringSafely(departure, "airport");
+                    String departureIata = getJsonStringSafely(departure, "iata");
+                    String scheduledDeparture = getJsonStringSafely(departure, "scheduled");
+
+                    // Extract arrival details
+                    JsonObject arrival = result.getJsonObject("arrival");
+                    String arrivalAirport = getJsonStringSafely(arrival, "airport");
+                    String arrivalIata = getJsonStringSafely(arrival, "iata");
+                    String scheduledArrival = getJsonStringSafely(arrival, "scheduled");
+
+                    // Create Flight object and add to list
+                    Flight flight = new Flight(flightNumber, flightStatus, departureIata, arrivalIata, scheduledDeparture, scheduledArrival);
                     list.add(flight);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -41,18 +53,13 @@ public class JsonFlightFiller {
         return list;
     }
 
-    public static void main(String[] args) {
-        try {
-            World w = new World("./data/airport-codes_no_comma.csv");
-            BufferedReader br = new BufferedReader(new FileReader("data/test.txt"));
-            String test = br.readLine();
-            JsonFlightFiller jsonFlightFiller = new JsonFlightFiller(test, w);
-            // Print the list of flights to verify
-            for (Flight flight : jsonFlightFiller.getList()) {
-                System.out.println(flight);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    /**
+     * Safely gets a string value from a JSON object.
+     */
+    private String getJsonStringSafely(JsonObject obj, String key) {
+        if (obj.containsKey(key) && !obj.isNull(key)) {
+            return obj.getString(key, "Unknown");
         }
+        return "Unknown";
     }
 }

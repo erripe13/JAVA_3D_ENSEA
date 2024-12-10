@@ -87,6 +87,8 @@ public class Interface extends Application {
                     if (nearestAirport != null) {
                         LOG.fine("Nearest airport: " + nearestAirport.toString());
                         earth.afficherMarqueur(nearestAirport);
+                        GatherFlightsTask fetchFlightsTask = new GatherFlightsTask(earth, nearestAirport, world);
+                        new Thread(fetchFlightsTask).start();
                     } else {
                         LOG.fine("No airport found near the clicked point.");
                     }

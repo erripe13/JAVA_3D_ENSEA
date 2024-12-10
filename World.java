@@ -40,6 +40,15 @@ public class World {
         }
     }
 
+    public Aeroport findByCode(String codeIATA) {
+        for (Aeroport aeroport : list) { // 'list' est la liste des Aeroports dans World
+            if (codeIATA.equalsIgnoreCase(aeroport.getIATA())) { // Utilise le getter de IATA
+                return aeroport;
+            }
+        }
+        return null; // Retourne null si aucun aéroport correspondant n'est trouvé
+    }
+
     public Aeroport trouverAeroportLePlusProche(double latitude, double longitude) {
         Aeroport plusProche = null;
         double distanceMin = Double.MAX_VALUE;
